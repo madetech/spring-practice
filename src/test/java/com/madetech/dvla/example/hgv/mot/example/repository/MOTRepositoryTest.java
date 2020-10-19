@@ -23,4 +23,9 @@ public class MOTRepositoryTest {
     assertNotNull(result.getId());
     assertEquals("XY123", result.getVehicleRegistration());
   }
+
+  @Test
+  public void returnNullWhenRegistrationDoesNotExists() {
+    assertNull(repository.getByVehicleRegistration("XY123"));
+  }
 }
