@@ -1,16 +1,16 @@
 package com.madetech.dvla.example.hgv.mot.example.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
 @EqualsAndHashCode
-@AllArgsConstructor(exclude = { "id" })
+@RequiredArgsConstructor
 public class MOT {
     private String id;
 
-    private String vehicleType;
+    private final String vehicleType;
 
-    private String vehicleRegistration;
+    private final String vehicleRegistration;
 }
