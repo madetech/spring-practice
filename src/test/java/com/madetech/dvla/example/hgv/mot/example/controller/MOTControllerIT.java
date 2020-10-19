@@ -34,4 +34,11 @@ public class MOTControllerIT {
 
     }
 
+    @Test
+    public void returnNotFoundIFCantFindAnMOT() {
+        ResponseEntity<MOTResponse> response = testRestTemplate.exchange("/mot/1", HttpMethod.GET, null, MOTResponse.class);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
 }
