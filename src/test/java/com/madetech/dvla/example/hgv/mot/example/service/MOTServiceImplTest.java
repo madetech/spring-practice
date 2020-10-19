@@ -8,9 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.internal.matchers.InstanceOf;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,12 +25,20 @@ public class MOTServiceImplTest {
 
     @Test
     public void getMOTByVehicleRegistrationReturnsMOT() {
-        MOTEntity motEntity = MOTEntity.builder().build();
+        String testVehicleReg = "hello";
 
-        when(motRepository.getByVehicleRegistration("foo")).thenReturn(motEntity);
+        MOTEntity motEntity = createMotEntity(testVehicleReg);
 
-        MOTDomain mot = motService.getByVehicleRegistration("foo");
+        when(motRepository.getByVehicleRegistration(testVehicleReg)).thenReturn(motEntity);
 
-        assertNotNull(mot);
+        MOTDomain mot = motService.getByVehicleRegistration(testVehicleReg);
+
+        assertSame(mot.getClass(), MOTDomain.class);
+        assertEquals(testVehicleReg,  mot.getVehicleRegistration());
+    }
+
+    private MOTEntity createMotEntity(String testVehicleReg) {
+        MOTEntity motEntity = MOTEntity.builder().vehicleRegistration(testVehicleReg).build();
+        return motEntity;
     }
 }
