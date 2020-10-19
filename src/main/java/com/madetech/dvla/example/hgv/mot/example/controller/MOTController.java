@@ -19,6 +19,7 @@ public class MOTController {
 
     private MOTDomainToResponseMapper mapper = Mappers.getMapper(MOTDomainToResponseMapper.class);
 
+    // No unit tests because it's covered by com.madetech.dvla.example.hgv.mot.example.controller.MOTControllerIntegrationTest
     @GetMapping("/mot/{vehicleRegistration}")
     public ResponseEntity<MOTResponse> GetByRegistration(@PathVariable String vehicleRegistration){
         MOTDomain domain = motService.getByVehicleRegistration(vehicleRegistration);

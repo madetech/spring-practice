@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class MOTControllerIT {
+public class MOTControllerIntegrationTest {
     @Autowired
     private TestRestTemplate testRestTemplate;
 
@@ -31,7 +31,6 @@ public class MOTControllerIT {
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("1", response.getBody().getVehicleRegistration());
-
     }
 
     @Test
