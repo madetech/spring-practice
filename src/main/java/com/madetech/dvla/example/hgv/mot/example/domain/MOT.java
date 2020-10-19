@@ -1,12 +1,11 @@
 package com.madetech.dvla.example.hgv.mot.example.domain;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Getter
 @EqualsAndHashCode
-@RequiredArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MOT {
     private String id;
 
