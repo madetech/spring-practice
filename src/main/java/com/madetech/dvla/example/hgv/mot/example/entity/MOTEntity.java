@@ -1,4 +1,4 @@
-package com.madetech.dvla.example.hgv.mot.example.domain;
+package com.madetech.dvla.example.hgv.mot.example.entity;
 
 import lombok.*;
 
@@ -6,7 +6,7 @@ import lombok.*;
 @EqualsAndHashCode
 @AllArgsConstructor
 @Builder
-public class MOT {
+public class MOTEntity {
     private String id;
 
     private final String vehicleType;

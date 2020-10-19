@@ -1,6 +1,6 @@
 package com.madetech.dvla.example.hgv.mot.example.repository;
 
-import com.madetech.dvla.example.hgv.mot.example.domain.MOT;
+import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
@@ -15,10 +15,10 @@ public class MOTRepositoryTest {
 
   @Test
   public void canGetAMOTByRegistration() {
-    MOT mot = MOT.builder().vehicleRegistration("XY123").build();
+    MOTEntity mot = MOTEntity.builder().vehicleRegistration("XY123").build();
     repository.save(mot);
 
-    MOT result = repository.getByVehicleRegistration("XY123");
+    MOTEntity result = repository.getByVehicleRegistration("XY123");
 
     assertNotNull(result.getId());
     assertEquals("XY123", result.getVehicleRegistration());
