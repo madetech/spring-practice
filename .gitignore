@@ -32,3 +32,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+## Mongo Data
+/.mongo_data
