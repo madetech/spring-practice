@@ -11,6 +11,6 @@ public class MOTEntityToDomainTest {
     public void mapReturnsValidBusinessObject() {
         MOTEntity mot = MOTEntity.builder().id("123").vehicleRegistration("ABC 123D").vehicleType("HippyBus").build();
 
-        // MOT reul
+        //MOTDomain result =
     }
 }
