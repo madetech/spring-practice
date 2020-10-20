@@ -1,10 +1,10 @@
-package com.madetech.dvla.example.hgv.mot.example.service;
+package com.madetech.dvla.hgv.mot.service;
 
 import com.github.javafaker.Faker;
-import com.madetech.dvla.example.hgv.mot.example.domain.MOTDomain;
-import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
-import com.madetech.dvla.example.hgv.mot.example.mapper.MOTEntityDomainMapper;
-import com.madetech.dvla.example.hgv.mot.example.repository.MOTRepository;
+import com.madetech.dvla.hgv.mot.domain.MOTDomain;
+import com.madetech.dvla.hgv.mot.entity.MOTEntity;
+import com.madetech.dvla.hgv.mot.mapper.MOTEntityDomainMapper;
+import com.madetech.dvla.hgv.mot.repository.MOTRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;

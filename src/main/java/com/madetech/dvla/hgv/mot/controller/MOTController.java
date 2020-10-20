@@ -1,11 +1,11 @@
-package com.madetech.dvla.example.hgv.mot.example.controller;
+package com.madetech.dvla.hgv.mot.controller;
 
-import com.madetech.dvla.example.hgv.mot.example.domain.MOTDomain;
-import com.madetech.dvla.example.hgv.mot.example.mapper.MOTDomainToResponseMapper;
-import com.madetech.dvla.example.hgv.mot.example.mapper.MOTRequestToDomainMapper;
-import com.madetech.dvla.example.hgv.mot.example.requests.MOTRequest;
-import com.madetech.dvla.example.hgv.mot.example.responses.MOTResponse;
-import com.madetech.dvla.example.hgv.mot.example.service.MOTService;
+import com.madetech.dvla.hgv.mot.domain.MOTDomain;
+import com.madetech.dvla.hgv.mot.mapper.MOTDomainToResponseMapper;
+import com.madetech.dvla.hgv.mot.mapper.MOTRequestToDomainMapper;
+import com.madetech.dvla.hgv.mot.requests.MOTRequest;
+import com.madetech.dvla.hgv.mot.responses.MOTResponse;
+import com.madetech.dvla.hgv.mot.service.MOTService;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +24,7 @@ public class MOTController {
 
     private final MOTRequestToDomainMapper motRequestToDomainMapper = Mappers.getMapper(MOTRequestToDomainMapper.class);
 
-    // No unit tests because it's covered by com.madetech.dvla.example.hgv.mot.example.controller.MOTControllerIntegrationTest
+    // No unit tests because it's covered by com.madetech.dvla.hgv.mot.controller.MOTControllerIntegrationTest
     @GetMapping("/mot/{vehicleRegistration}")
     public ResponseEntity<MOTResponse> GetByRegistration(@PathVariable String vehicleRegistration){
         MOTDomain domain = motService.getByVehicleRegistration(vehicleRegistration);

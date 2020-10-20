@@ -1,4 +1,4 @@
-package com.madetech.dvla.example.hgv.frontend.controller;
+package com.madetech.dvla.hgv.frontend.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

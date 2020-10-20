@@ -1,10 +1,10 @@
-package com.madetech.dvla.example.hgv.mot.example.controller;
+package com.madetech.dvla.hgv.mot.controller;
 
 import com.github.javafaker.Faker;
-import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
-import com.madetech.dvla.example.hgv.mot.example.repository.MOTRepository;
-import com.madetech.dvla.example.hgv.mot.example.requests.MOTRequest;
-import com.madetech.dvla.example.hgv.mot.example.responses.MOTResponse;
+import com.madetech.dvla.hgv.mot.entity.MOTEntity;
+import com.madetech.dvla.hgv.mot.repository.MOTRepository;
+import com.madetech.dvla.hgv.mot.requests.MOTRequest;
+import com.madetech.dvla.hgv.mot.responses.MOTResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

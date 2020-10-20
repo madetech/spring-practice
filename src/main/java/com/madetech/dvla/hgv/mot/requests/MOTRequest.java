@@ -1,4 +1,4 @@
-package com.madetech.dvla.example.hgv.mot.example.requests;
+package com.madetech.dvla.hgv.mot.requests;
 
 import lombok.Builder;
 import lombok.Data;
