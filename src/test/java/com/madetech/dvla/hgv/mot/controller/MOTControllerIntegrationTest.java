@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +44,8 @@ public class MOTControllerIntegrationTest {
 
     @Test
     public void canAddAnMOT() {
-        ResponseEntity<?> response = testRestTemplate.exchange("/mot", HttpMethod.POST, MOTRequest.class, null);
+        HttpEntity<MOTRequest> motRequest = new HttpEntity<>(MOTRequest.builder().vehicleRegistration("adsgfad").vehicleType("zdgad").build());
+        ResponseEntity<String> response = testRestTemplate.exchange("/mot", HttpMethod.POST, motRequest, String.class);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
     }
