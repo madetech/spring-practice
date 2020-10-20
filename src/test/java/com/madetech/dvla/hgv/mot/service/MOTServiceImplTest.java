@@ -7,6 +7,7 @@ import com.madetech.dvla.example.hgv.mot.example.repository.MOTRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mapstruct.factory.Mappers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.internal.matchers.InstanceOf;
@@ -39,24 +40,21 @@ public class MOTServiceImplTest {
         assertEquals(testVehicleReg,  mot.getVehicleRegistration());
     }
 
-//     @Test
-//     public void addMOTPersistsMOTToDatabase() {
-//         Faker faker = new Faker();
-//         String registration = faker.lorem().word();
-//         String vehicleType = faker.lorem().word();
-//         MOTDomain motDomain = MOTDomain.builder()
-//             .vehicleRegistration(registration)
-//             .vehicleType(vehicleType)
-//             .build();
-//
-//         motService.addMOT(motDomain);
-//
-//         // List<String> mockedList = mock(MyList.class);
-//         // mockedList.add("test");
-//         // verify(mockedList).add("test");
-//         //
-//          verify(motRepository).addMOT();
-//     }
+     @Test
+     public void addMOTPersistsMOTToDatabase() {
+         Faker faker = new Faker();
+         String registration = faker.lorem().word();
+         String vehicleType = faker.lorem().word();
+         MOTDomain motDomain = MOTDomain.builder()
+             .vehicleRegistration(registration)
+             .vehicleType(vehicleType)
+             .build();
+         MOTEntityToDomainMapper mapper = Mappers.getMapper(MOTEntityToDomainMapper.class);
+
+         motService.addMOT(motDomain);
+
+         verify(motRepository).save(mapper.MOTDomainToMOTEntity(motDomain));
+     }
 
     private MOTEntity createMotEntity(String testVehicleReg) {
         MOTEntity motEntity = MOTEntity.builder().vehicleRegistration(testVehicleReg).build();

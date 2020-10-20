@@ -28,6 +28,6 @@ public class MOTServiceImpl implements MOTService {
 
     @Override
     public void addMOT(MOTDomain mot) {
-
+        motRepository.save(mapper.MOTDomainToMOTEntity(mot));
     }
 }

@@ -32,15 +32,4 @@ public class MOTRepositoryTest {
   public void returnNullWhenRegistrationDoesNotExists() {
     assertNull(repository.getByVehicleRegistration("does-not-exist"));
   }
-
-  @Test
-  public void canAddAnMOT() {
-    MOTEntity mot = MOTEntity.builder().vehicleRegistration(faker.lorem().word()).build();
-
-    repository.save(mot);
-
-    MOTEntity result = repository.getByVehicleRegistration(mot.getVehicleRegistration());
-    assertNotNull(result.getId());
-    assertEquals(mot.getVehicleRegistration(), result.getVehicleRegistration());
-  }
 }
