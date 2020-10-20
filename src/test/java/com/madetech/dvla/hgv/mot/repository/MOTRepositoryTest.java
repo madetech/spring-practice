@@ -1,6 +1,8 @@
-package com.madetech.dvla.hgv.mot.repository;
+package com.madetech.dvla.example.hgv.mot.example.repository;
 
-import com.madetech.dvla.hgv.mot.entity.MOTEntity;
+import com.github.javafaker.Faker;
+import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
@@ -13,19 +15,32 @@ public class MOTRepositoryTest {
   @Autowired
   MOTRepository repository;
 
+  private final Faker faker = new Faker();
+
   @Test
-  public void canGetAMOTByRegistration() {
-    MOTEntity mot = MOTEntity.builder().vehicleRegistration("XY123").build();
+  public void canGetAnMOTByRegistration() {
+    MOTEntity mot = MOTEntity.builder().vehicleRegistration(faker.lorem().word()).build();
     repository.save(mot);
 
-    MOTEntity result = repository.getByVehicleRegistration("XY123");
+    MOTEntity result = repository.getByVehicleRegistration(mot.getVehicleRegistration());
 
     assertNotNull(result.getId());
-    assertEquals("XY123", result.getVehicleRegistration());
+    assertEquals(mot.getVehicleRegistration(), result.getVehicleRegistration());
   }
 
   @Test
   public void returnNullWhenRegistrationDoesNotExists() {
-    assertNull(repository.getByVehicleRegistration("XY123"));
+    assertNull(repository.getByVehicleRegistration("does-not-exist"));
+  }
+
+  @Test
+  public void canAddAnMOT() {
+    MOTEntity mot = MOTEntity.builder().vehicleRegistration(faker.lorem().word()).build();
+
+    repository.save(mot);
+
+    MOTEntity result = repository.getByVehicleRegistration(mot.getVehicleRegistration());
+    assertNotNull(result.getId());
+    assertEquals(mot.getVehicleRegistration(), result.getVehicleRegistration());
   }
 }
