@@ -1,5 +1,6 @@
 package com.madetech.dvla.example.hgv.mot.example.service;
 
+import com.github.javafaker.Faker;
 import com.madetech.dvla.example.hgv.mot.example.domain.MOTDomain;
 import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
 import com.madetech.dvla.example.hgv.mot.example.mapper.MOTEntityDomainMapper;
@@ -11,10 +12,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.github.javafaker.Faker;
 
 @ExtendWith(MockitoExtension.class)
 public class MOTServiceImplTest {

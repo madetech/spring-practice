@@ -5,7 +5,6 @@ import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
 import com.madetech.dvla.example.hgv.mot.example.repository.MOTRepository;
 import com.madetech.dvla.example.hgv.mot.example.requests.MOTRequest;
 import com.madetech.dvla.example.hgv.mot.example.responses.MOTResponse;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +13,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class MOTControllerIntegrationTest {

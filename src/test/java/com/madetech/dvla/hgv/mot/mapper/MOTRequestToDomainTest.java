@@ -2,7 +2,6 @@ package com.madetech.dvla.example.hgv.mot.example.mapper;
 
 import com.madetech.dvla.example.hgv.mot.example.domain.MOTDomain;
 import com.madetech.dvla.example.hgv.mot.example.requests.MOTRequest;
-import com.madetech.dvla.example.hgv.mot.example.responses.MOTResponse;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 

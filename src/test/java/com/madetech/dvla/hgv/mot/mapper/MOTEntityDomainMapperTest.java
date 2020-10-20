@@ -5,7 +5,8 @@ import com.madetech.dvla.example.hgv.mot.example.domain.MOTDomain;
 import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MOTEntityDomainMapperTest {
 

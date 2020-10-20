@@ -2,7 +2,6 @@ package com.madetech.dvla.example.hgv.mot.example.repository;
 
 import com.github.javafaker.Faker;
 import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
