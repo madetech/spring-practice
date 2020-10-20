@@ -1,8 +1,10 @@
-package com.madetech.dvla.hgv.mot.controller;
+package com.madetech.dvla.example.hgv.mot.example.controller;
 
-import com.madetech.dvla.hgv.mot.entity.MOTEntity;
-import com.madetech.dvla.hgv.mot.repository.MOTRepository;
-import com.madetech.dvla.hgv.mot.responses.MOTResponse;
+import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
+import com.madetech.dvla.example.hgv.mot.example.repository.MOTRepository;
+import com.madetech.dvla.example.hgv.mot.example.requests.MOTRequest;
+import com.madetech.dvla.example.hgv.mot.example.responses.MOTResponse;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -39,4 +41,10 @@ public class MOTControllerIntegrationTest {
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
+    @Test
+    public void canAddAnMOT() {
+        ResponseEntity<?> response = testRestTemplate.exchange("/mot", HttpMethod.POST, MOTRequest.class, null);
+
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+    }
 }

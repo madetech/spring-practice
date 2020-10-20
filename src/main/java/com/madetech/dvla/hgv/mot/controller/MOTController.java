@@ -29,4 +29,5 @@ public class MOTController {
 
         return new ResponseEntity<>(mapper.MOTDomainToMOTResponse(domain), HttpStatus.OK);
     }
+
 }
