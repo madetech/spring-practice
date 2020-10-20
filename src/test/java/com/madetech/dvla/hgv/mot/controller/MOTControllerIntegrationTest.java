@@ -1,5 +1,6 @@
 package com.madetech.dvla.example.hgv.mot.example.controller;
 
+import com.github.javafaker.Faker;
 import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
 import com.madetech.dvla.example.hgv.mot.example.repository.MOTRepository;
 import com.madetech.dvla.example.hgv.mot.example.requests.MOTRequest;
@@ -23,30 +24,51 @@ public class MOTControllerIntegrationTest {
     @Autowired
     private MOTRepository motRepository;
 
+    Faker faker = new Faker();
+
+    private String vehicleRegistration() { return faker.numerify("XY####"); }
+
+    private String vehicleType() { return faker.princessBride().character(); }
+
     @Test
     public void canGetAnMOT() {
-        MOTEntity entity = MOTEntity.builder().vehicleRegistration("1").build();
-
+        String rego = vehicleRegistration();
+        MOTEntity entity = MOTEntity.builder().vehicleRegistration(rego).build();
         motRepository.save(entity);
 
-        ResponseEntity<MOTResponse> response = testRestTemplate.exchange("/mot/1", HttpMethod.GET, null, MOTResponse.class);
+        ResponseEntity<MOTResponse> response = testRestTemplate.exchange(String.format("/mot/%s", rego), HttpMethod.GET, null, MOTResponse.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("1", response.getBody().getVehicleRegistration());
+        assertEquals(rego, response.getBody().getVehicleRegistration());
     }
 
     @Test
     public void returnNotFoundIFCantFindAnMOT() {
-        ResponseEntity<MOTResponse> response = testRestTemplate.exchange("/mot/1", HttpMethod.GET, null, MOTResponse.class);
+        ResponseEntity<MOTResponse> response = testRestTemplate.exchange("/mot/does-not-exist", HttpMethod.GET, null, MOTResponse.class);
 
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     @Test
     public void canAddAnMOT() {
-        HttpEntity<MOTRequest> motRequest = new HttpEntity<>(MOTRequest.builder().vehicleRegistration("adsgfad").vehicleType("zdgad").build());
-        ResponseEntity<String> response = testRestTemplate.exchange("/mot", HttpMethod.POST, motRequest, String.class);
+        String rego = vehicleRegistration();
+        HttpEntity<MOTRequest> request = new HttpEntity<>(MOTRequest.builder().vehicleRegistration(rego).build());
+
+        ResponseEntity<String> response = testRestTemplate.exchange("/mot", HttpMethod.POST, request, String.class);
 
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(String.format("/mot/%s", rego), response.getHeaders().getLocation().toString());
     }
+
+//    @Test
+//    public void addMOTFailsIfAlreadyExists() {
+//        String rego = vehicleRegistration();
+//        MOTEntity entity = MOTEntity.builder().vehicleRegistration(rego).build();
+//        motRepository.save(entity);
+//        HttpEntity<MOTRequest> request = new HttpEntity<>(MOTRequest.builder().vehicleRegistration(rego).build());
+//
+//        ResponseEntity<String> response = testRestTemplate.exchange("/mot", HttpMethod.POST, request, String.class);
+//
+//        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+//    }
 }

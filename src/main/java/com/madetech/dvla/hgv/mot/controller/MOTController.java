@@ -37,9 +37,8 @@ public class MOTController {
 
     @PostMapping("/mot")
     public ResponseEntity<String> add(@RequestBody MOTRequest mot) throws URISyntaxException {
-        final MOTDomain motDomain = motRequestToDomainMapper.MOTRequestToMOTDomain(mot);
+        MOTDomain motDomain = motRequestToDomainMapper.MOTRequestToMOTDomain(mot);
         motService.addMOT(motDomain);
-        // Todo: return id
-        return ResponseEntity.created(new URI("/adf")).build();
+        return ResponseEntity.created(new URI(String.format("/mot/%s", motDomain.getVehicleRegistration()))).build();
     }
 }

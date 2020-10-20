@@ -5,7 +5,7 @@ import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel="spring")
-public interface MOTEntityToDomainMapper {
+public interface MOTEntityDomainMapper {
 	MOTDomain MOTEntityToMOTDomain(MOTEntity entity);
 
 	MOTEntity MOTDomainToMOTEntity(MOTDomain mot);

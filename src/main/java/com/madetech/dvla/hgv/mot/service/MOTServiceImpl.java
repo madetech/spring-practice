@@ -1,9 +1,9 @@
-package com.madetech.dvla.hgv.mot.service;
+package com.madetech.dvla.example.hgv.mot.example.service;
 
-import com.madetech.dvla.hgv.mot.domain.MOTDomain;
-import com.madetech.dvla.hgv.mot.entity.MOTEntity;
-import com.madetech.dvla.hgv.mot.mapper.MOTEntityToDomainMapper;
-import com.madetech.dvla.hgv.mot.repository.MOTRepository;
+import com.madetech.dvla.example.hgv.mot.example.domain.MOTDomain;
+import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
+import com.madetech.dvla.example.hgv.mot.example.mapper.MOTEntityDomainMapper;
+import com.madetech.dvla.example.hgv.mot.example.repository.MOTRepository;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ public class MOTServiceImpl implements MOTService {
     @Autowired
     private MOTRepository motRepository;
 
-    private MOTEntityToDomainMapper mapper = Mappers.getMapper(MOTEntityToDomainMapper.class);
+    private MOTEntityDomainMapper mapper = Mappers.getMapper(MOTEntityDomainMapper.class);
 
 
 

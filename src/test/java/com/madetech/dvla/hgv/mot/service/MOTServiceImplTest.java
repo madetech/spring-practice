@@ -2,17 +2,15 @@ package com.madetech.dvla.example.hgv.mot.example.service;
 
 import com.madetech.dvla.example.hgv.mot.example.domain.MOTDomain;
 import com.madetech.dvla.example.hgv.mot.example.entity.MOTEntity;
-import com.madetech.dvla.example.hgv.mot.example.mapper.MOTEntityToDomainMapper;
+import com.madetech.dvla.example.hgv.mot.example.mapper.MOTEntityDomainMapper;
 import com.madetech.dvla.example.hgv.mot.example.repository.MOTRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.internal.matchers.InstanceOf;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -49,7 +47,7 @@ public class MOTServiceImplTest {
              .vehicleRegistration(registration)
              .vehicleType(vehicleType)
              .build();
-         MOTEntityToDomainMapper mapper = Mappers.getMapper(MOTEntityToDomainMapper.class);
+         MOTEntityDomainMapper mapper = Mappers.getMapper(MOTEntityDomainMapper.class);
 
          motService.addMOT(motDomain);
 
