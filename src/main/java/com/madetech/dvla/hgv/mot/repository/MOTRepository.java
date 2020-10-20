@@ -6,5 +6,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface MOTRepository extends MongoRepository<MOTEntity, String> {
     public MOTEntity getByVehicleRegistration(String vehicleRegistration);
 
-    // public void addMOT(MOTEntity mot);
+    public void addMOT(MOTEntity mot);
 }

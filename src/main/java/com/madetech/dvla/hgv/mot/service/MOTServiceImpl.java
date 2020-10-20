@@ -15,6 +15,8 @@ public class MOTServiceImpl implements MOTService {
 
     private MOTEntityToDomainMapper mapper = Mappers.getMapper(MOTEntityToDomainMapper.class);
 
+
+
     @Override
     public MOTDomain getByVehicleRegistration(String vehicleRegistration) {
         MOTEntity entity = motRepository.getByVehicleRegistration(vehicleRegistration);
@@ -22,5 +24,10 @@ public class MOTServiceImpl implements MOTService {
         if(entity == null) return null;
 
         return mapper.MOTEntityToMOTDomain(entity);
+    }
+
+    @Override
+    public void addMOT(MOTDomain mot) {
+
     }
 }

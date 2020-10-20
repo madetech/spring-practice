@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 public interface MOTService {
     MOTDomain getByVehicleRegistration(String vehicleRegistration);
 
-    // void addMOT(MOTDomain mot);
+    void addMOT(MOTDomain mot);
 }
