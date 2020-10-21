@@ -9,3 +9,12 @@ services:
       - 27017:27017
     volumes: 
       - ./.mongo_data/:/data/db/
+  application:
+    image: dvla-spring-practice
+    build: .
+    ports:
+      - 8080:8080
+    links:
+      - "database:db"
+    environment:
+      database.hostname: db
