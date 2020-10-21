@@ -15,6 +15,6 @@ services:
     ports:
       - 8080:8080
     links:
-      - "database:db"
+      - database
     environment:
-      database.hostname: db
+      - "database.hostname=database"

@@ -1,4 +1,4 @@
-package configuration;
+package com.madetech.dvla.hgv.mot.configuration;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MongoConfiguration {
-    @Value("database.hostname")
-    private String hostname = "localhost";
+    @Value("${database.hostname}")
+    private String hostname;
 
     public @Bean MongoClient mongoClient() {
         return MongoClients.create("mongodb://" + hostname + ":27017");
